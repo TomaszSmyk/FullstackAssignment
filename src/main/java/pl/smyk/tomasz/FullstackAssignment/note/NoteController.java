@@ -21,7 +21,7 @@ public class NoteController {
     }
 
     @GetMapping("/notes/{id}")
-    public Note getNote(@PathVariable String id) {
+    public Note getNote(@PathVariable Long id) {
         log.info("GETting note with id = " + id);
         return noteService.findNoteById(id);
     }
@@ -33,13 +33,13 @@ public class NoteController {
     }
 
     @PutMapping("/notes/{id}")
-    public void updateNote(@PathVariable String id) {
+    public void updateNote(@PathVariable Long id) {
         noteService.findNoteById(id);
         log.info("UPDATE note with id " + id);
     }
 
     @DeleteMapping("/notes/{id}")
-    public void deleteNote(@PathVariable String id) {
+    public void deleteNote(@PathVariable Long id) {
         noteService.deleteNote(id);
         log.info("DELETE note with id " + id);
     }
