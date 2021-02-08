@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /*
 TODO
 check - does this final works good when modifying notes
@@ -14,9 +17,13 @@ check - does this final works good when modifying notes
 @RequiredArgsConstructor
 public class Note {
     @NotNull
+    private final String id;
+    @NotNull
     private final String title;
     @NotNull
     private final String content;
-    private LocalDate created = LocalDate.now();
-    private LocalDate modified = LocalDate.now();
+    private String created = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    private String modified = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//    private LocalDateTime created = LocalDateTime.parse(LocalDateTime.now(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//    private LocalDateTime modified = LocalDateTime.now();
 }
