@@ -15,7 +15,7 @@ public class NoteController {
     private NoteService noteService;
 
     @GetMapping("/notes")
-    public List<Note> getAllNotes() {
+    public @ResponseBody List<Note> getAllNotes() {
         log.info("GETting all notes");
         return noteService.getNotes();
     }
@@ -26,7 +26,7 @@ public class NoteController {
         return noteService.findNoteById(id);
     }
 
-    @PostMapping("newNote")
+    @PostMapping("/newNote")
     public void createNewNote(@RequestBody Note note) {
         noteService.addNote(note);
         log.info("POSTing new note " + note.toString());
