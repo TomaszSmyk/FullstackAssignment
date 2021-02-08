@@ -23,21 +23,24 @@ public class NoteController {
     @GetMapping("/notes/{id}")
     public Note getNote(@PathVariable String id) {
         log.info("GETting note with id = " + id);
-        return noteService.getNoteById(id);
+        return noteService.findNoteById(id);
     }
 
     @PostMapping("newNote")
-    public void createNewNote() {
-        log.info("POSTing new note");
+    public void createNewNote(@RequestBody Note note) {
+        noteService.addNote(note);
+        log.info("POSTing new note " + note.toString());
     }
 
     @PutMapping("/notes/{id}")
     public void updateNote(@PathVariable String id) {
+        noteService.findNoteById(id);
         log.info("UPDATE note with id " + id);
     }
 
     @DeleteMapping("/notes/{id}")
     public void deleteNote(@PathVariable String id) {
+        noteService.deleteNote(id);
         log.info("DELETE note with id " + id);
     }
 }
