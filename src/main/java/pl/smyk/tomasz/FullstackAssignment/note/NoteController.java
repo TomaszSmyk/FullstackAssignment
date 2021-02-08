@@ -3,9 +3,7 @@ package pl.smyk.tomasz.FullstackAssignment.note;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,15 +14,30 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
-    @RequestMapping("/notes")
+    @GetMapping("/notes")
     public List<Note> getAllNotes() {
-        log.info("Getting all notes");
+        log.info("GETting all notes");
         return noteService.getNotes();
     }
 
-    @RequestMapping("/notes/{id}")
+    @GetMapping("/notes/{id}")
     public Note getNote(@PathVariable String id) {
-        log.info("Getting note with id = " + id);
+        log.info("GETting note with id = " + id);
         return noteService.getNoteById(id);
+    }
+
+    @PostMapping("newNote")
+    public void createNewNote() {
+        log.info("POSTing new note");
+    }
+
+    @PutMapping("/notes/{id}")
+    public void updateNote(@PathVariable String id) {
+        log.info("UPDATE note with id " + id);
+    }
+
+    @DeleteMapping("/notes/{id}")
+    public void deleteNote(@PathVariable String id) {
+        log.info("DELETE note with id " + id);
     }
 }
