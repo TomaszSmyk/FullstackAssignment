@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -39,5 +37,9 @@ public class NoteService {
     public void deleteNote(Long id) {
 //        notes.remove(notes.stream().filter(x -> x.getId().equals(id)).findFirst().get());
         noteRepository.deleteById(id);
+    }
+
+    public void updateNote(Note note) {
+        noteRepository.save(note);
     }
 }

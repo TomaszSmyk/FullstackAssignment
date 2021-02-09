@@ -33,9 +33,11 @@ public class NoteController {
     }
 
     @PutMapping("/notes/{id}")
-    public void updateNote(@PathVariable Long id) {
-        noteService.findNoteById(id);
+    public void updateNote(@PathVariable Long id, @RequestBody Note note) {
+        //todo implement update
+//        noteService.findNoteById(id);
         log.info("UPDATE note with id " + id);
+        noteService.updateNote(note);
     }
 
     @DeleteMapping("/notes/{id}")
