@@ -23,6 +23,16 @@ public class NoteService {
         return noteRepository.findById(id).get();
     }
 
+    public List<Note> getNoteHistory(Long id) {
+//        AuditReader auditReader = AuditReaderFactory.get();
+//        return noteRepository.findRevisions(id).getContent();
+        List<Note> noteHistory = new ArrayList<>();
+
+        noteRepository.findRevisions(id).get().forEach(x -> noteHistory.add(x.getEntity()));
+
+        return noteHistory;
+    }
+
     public Note addNote(Note note) {
         return noteRepository.save(note);
     }
@@ -32,6 +42,7 @@ public class NoteService {
     }
 
     public Note updateNote(Note note) {
+        //todo block 'created' column changes
         return noteRepository.save(note);
     }
 }

@@ -2,25 +2,25 @@ package pl.smyk.tomasz.FullstackAssignment.note;
 
 
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /*
-TODO
-check - does this final works good when modifying notes
+TODO check - does this final works good when modifying notes
  */
 @Entity
+@Audited
 @Data
 public class Note {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
+    @GeneratedValue
+//    @NotNull
     private Long id;
     @NotNull
     private String title;

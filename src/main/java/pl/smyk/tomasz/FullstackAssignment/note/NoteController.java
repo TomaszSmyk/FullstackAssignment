@@ -26,6 +26,12 @@ public class NoteController {
         return noteService.findNoteById(id);
     }
 
+    //todo move it to second webservice
+    @GetMapping("/notes/{id}/history")
+    public List<Note> getNotesHistory(@PathVariable Long id) {
+        return noteService.getNoteHistory(id);
+    }
+
     @PostMapping("/newNote")
     public Note createNewNote(@RequestBody Note note) {
         log.info("POSTing new note " + note.toString());
