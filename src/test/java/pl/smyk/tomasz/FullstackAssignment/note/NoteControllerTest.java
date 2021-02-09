@@ -1,6 +1,9 @@
 package pl.smyk.tomasz.FullstackAssignment.note;
 
+import org.aspectj.weaver.ast.Not;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,11 +13,12 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doReturn;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -25,6 +29,7 @@ public class NoteControllerTest {
     @MockBean
     private NoteService noteService;
 
+    //this will load only web layer, not whole app context
     @Autowired
     private MockMvc mockMvc;
 
@@ -62,6 +67,55 @@ public class NoteControllerTest {
                 .andExpect(content().string(containsString("1")))
                 .andExpect(content().string(containsString("Title 1")))
                 .andExpect(content().string(containsString("Content 1")));
+
+
     }
 
+
+    @Test
+    void testCreateNewNoteSuccess() throws Exception{
+        Note note1 = new Note(1L,"Title 1", "Content 1");
+        when(noteService.addNote(ArgumentMatchers.any())).thenReturn(note1);
+
+        this.mockMvc
+                .perform(post("/newNote")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"id\":1, \"title\":\"Title 1\", \"content\":\"Content 1\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.title", is("Title 1")))
+                .andExpect(jsonPath("$.content", is("Content 1")));
+
+        ArgumentCaptor<Note> anyNote = ArgumentCaptor.forClass(Note.class);
+        verify(noteService).addNote(anyNote.capture());
+        assertThat(anyNote.getValue().getTitle()).isEqualTo("Title 1");
+        assertThat(anyNote.getValue().getContent()).isEqualTo("Content 1");
+    }
+
+    @Test
+    void testUpdateNoteSuccess() throws Exception{
+        Note note1 = new Note(1L,"Updated Title 1", "Updated Content 1");
+        when(noteService.updateNote(ArgumentMatchers.any())).thenReturn(note1);
+
+        this.mockMvc
+                .perform(put("/notes/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"id\":1, \"title\":\"Title 1\", \"content\":\"Content 1\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.title", is("Updated Title 1")))
+                .andExpect(jsonPath("$.content", is("Updated Content 1")));
+
+        ArgumentCaptor<Note> anyNote = ArgumentCaptor.forClass(Note.class);
+        verify(noteService).updateNote(anyNote.capture());
+        assertThat(anyNote.getValue().getTitle()).isEqualTo("Title 1");
+        assertThat(anyNote.getValue().getContent()).isEqualTo("Content 1");
+    }
+
+    @Test
+    void testDeleteNoteSuccess() throws Exception{
+        this.mockMvc
+                .perform(delete("/notes/1"))
+                .andExpect(status().isOk());
+    }
 }

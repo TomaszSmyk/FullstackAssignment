@@ -27,17 +27,17 @@ public class NoteController {
     }
 
     @PostMapping("/newNote")
-    public void createNewNote(@RequestBody Note note) {
-        noteService.addNote(note);
+    public Note createNewNote(@RequestBody Note note) {
         log.info("POSTing new note " + note.toString());
+        return noteService.addNote(note);
+//        return "redirect:/notes/" + note.getId();
     }
 
     @PutMapping("/notes/{id}")
-    public void updateNote(@PathVariable Long id, @RequestBody Note note) {
-        //todo implement update
+    public Note updateNote(@PathVariable Long id, @RequestBody Note note) {
 //        noteService.findNoteById(id);
         log.info("UPDATE note with id " + id);
-        noteService.updateNote(note);
+        return noteService.updateNote(note);
     }
 
     @DeleteMapping("/notes/{id}")
