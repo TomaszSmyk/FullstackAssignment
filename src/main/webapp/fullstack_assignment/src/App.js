@@ -3,7 +3,12 @@ import './App.css';
 
 import NavigationBar from "./components/NavigationBar";
 import FooterBar from "./components/FooterBar";
+import NotesList from "./components/NotesList";
+import AddNote from "./components/AddNote";
 import {Container, Row, Col, Jumbotron} from 'react-bootstrap';
+import {BrowserRouter as Router, Switch, Route}  from 'react-router-dom';
+import Note from "./components/Note";
+import NoteHistory from "./components/NoteHistory";
 
 function App() {
     const textCentered = {
@@ -11,19 +16,20 @@ function App() {
     };
 
   return (
-    <div className="App">
+    <Router>
         <NavigationBar/>
-        <Container fluid>
+        {/*<Container fluid>*/}
             <Jumbotron>
-                <Row md={3} className="text-center">
-                    <Col sm={4}>Title</Col>
-                    <Col sm={4}>Created</Col>
-                    <Col sm={4}>Modified</Col>
-                </Row>
+                <Switch>
+                    <Route path="/notes" exact component={NotesList}/>
+                    <Route path="/newNote" exact component={AddNote}/>
+                    <Route path="/notes/:id" exact component={Note}/>
+                    <Route path="/notes/:id/history" exact component={NoteHistory}/>
+                </Switch>
             </Jumbotron>
-        </Container>
+        {/*</Container>*/}
         <FooterBar/>
-    </div>
+    </Router>
   );
 }
 
