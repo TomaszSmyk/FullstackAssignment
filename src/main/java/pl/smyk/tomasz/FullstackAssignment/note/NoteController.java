@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @Slf4j
+@CrossOrigin
 public class NoteController {
 
     @Autowired
@@ -19,6 +20,7 @@ public class NoteController {
         log.info("GETting all notes");
         return noteService.getNotes();
     }
+
 
     @GetMapping("/notes/{id}")
     public Note getNote(@PathVariable Long id) {

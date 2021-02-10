@@ -20,7 +20,6 @@ TODO check - does this final works good when modifying notes
 public class Note {
     @Id
     @GeneratedValue
-//    @NotNull
     private Long id;
     @NotNull
     private String title;

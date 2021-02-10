@@ -13,4 +13,5 @@ public class FullstackAssignmentApplication {
 		SpringApplication.run(FullstackAssignmentApplication.class, args);
 	}
 
+
 }
