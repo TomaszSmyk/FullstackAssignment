@@ -15,7 +15,7 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
-    @GetMapping("/notes")
+    @GetMapping(value = {"/notes", "/"})
     public @ResponseBody List<Note> getAllNotes() {
         log.info("GETting all notes");
         return noteService.getNotes();
