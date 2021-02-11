@@ -1,11 +1,7 @@
 ## Table of contents
-* [General info](#general-info)
 * [Technologies](#technologies)
 * [Requirements](#requirements)
 * [Setup](#setup)
-
-## General info
-This project is simple Lorem ipsum dolor generator.
 	
 ## Technologies
 Project is created with:
