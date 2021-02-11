@@ -30,11 +30,14 @@ git clone https://github.com/TomaszSmyk/FullstackAssignment.git
 ```
 Second, run server side and then client side of application.
 * To run server side
-Go to ./FullstackAssignment and start the server:
+Go to ./FullstackAssignment 
 
 ```
 $ cd ./FullstackAssignment
-$ mvnw spring-boot:run
+```
+and start the server (use mvnw instead of mvn on windows):
+```
+$ mvn spring-boot:run
 ```
 
 * To run client side
