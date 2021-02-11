@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, Card, Table} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';

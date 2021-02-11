@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import {Navbar, Nav} from "react-bootstrap";
-import {Container, Row, Col} from "react-bootstrap";
-import axios from "axios";
+import {Navbar} from "react-bootstrap";
+import {Container, Col} from "react-bootstrap";
 
 export default class FooterBar extends Component{
 

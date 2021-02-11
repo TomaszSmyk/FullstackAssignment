@@ -15,8 +15,6 @@ export default class NavigationBar extends Component{
                     <Nav className="mr-auto">
                         <Link to={"/newNote"} className="nav-link">Create new note</Link>
                         <Link to={"/notes"} className="nav-link">See all notes</Link>
-                        {/*<Nav.Link href="/newNote">Create new note</Nav.Link>*/}
-                        {/*<Nav.Link href="/notes">See all notes</Nav.Link>*/}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

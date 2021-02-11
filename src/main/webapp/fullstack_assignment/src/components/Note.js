@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Button, Card, Form, Table} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import axios from "axios";
 
 export default class Note extends Component{
@@ -44,7 +43,6 @@ export default class Note extends Component{
     };
 
     render() {
-        const noteId = +this.props.match.params.id;
         return (
             <Card>
                 <Card.Body>

@@ -8,7 +8,7 @@ import NavigationBar from "./components/NavigationBar";
 import FooterBar from "./components/FooterBar";
 import NotesList from "./components/NotesList";
 import AddNote from "./components/AddNote";
-import {Container, Row, Col, Jumbotron} from 'react-bootstrap';
+import {Jumbotron} from 'react-bootstrap';
 import {BrowserRouter as Router, Switch, Route}  from 'react-router-dom';
 import Note from "./components/Note";
 import NoteHistory from "./components/NoteHistory";
