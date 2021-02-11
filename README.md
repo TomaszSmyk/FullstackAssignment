@@ -48,5 +48,5 @@ $ npm install
 $ npm start
 ```
 
-Finally, You can access application at http://localhost:8080
+Finally, You can access application at http://localhost:3000
 
