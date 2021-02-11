@@ -50,10 +50,3 @@ $ npm start
 
 Finally, You can access application at http://localhost:8080
 
-## Examples
-You can use following URIs to test application:
-
-POST:
-
-
-GET
