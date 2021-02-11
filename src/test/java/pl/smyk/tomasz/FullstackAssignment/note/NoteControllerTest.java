@@ -1,6 +1,5 @@
 package pl.smyk.tomasz.FullstackAssignment.note;
 
-import org.aspectj.weaver.ast.Not;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
@@ -16,7 +15,6 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -67,10 +65,7 @@ public class NoteControllerTest {
                 .andExpect(content().string(containsString("1")))
                 .andExpect(content().string(containsString("Title 1")))
                 .andExpect(content().string(containsString("Content 1")));
-
-
     }
-
 
     @Test
     void testCreateNewNoteSuccess() throws Exception{

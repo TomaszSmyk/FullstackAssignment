@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class NoteService {
@@ -24,13 +23,7 @@ public class NoteService {
         return noteRepository.findById(id).get();
     }
 
-    public List<Note> getNoteHistory(Long id) {
-        List<Note> noteHistory = new ArrayList<>();
 
-        noteRepository.findRevisions(id).get().forEach(x -> noteHistory.add(x.getEntity()));
-
-        return noteHistory;
-    }
 
     public Note addNote(Note note) {
         return noteRepository.save(note);
@@ -41,7 +34,6 @@ public class NoteService {
     }
 
     public Note updateNote(Note note) {
-        //todo block 'created' column changes
         return noteRepository.save(note);
     }
 }

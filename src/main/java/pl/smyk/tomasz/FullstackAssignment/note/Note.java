@@ -11,9 +11,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/*
-TODO check - does this final works good when modifying notes
- */
 @Entity
 @Audited
 @Data
