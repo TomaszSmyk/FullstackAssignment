@@ -25,7 +25,7 @@ function App() {
             <Jumbotron>
                 <Switch>
                     <Route path="/notes" exact component={NotesList}/>
-                    <Route path="/" exact component={NotesList}/>
+                    {/*<Route path="/" exact component={NotesList}/>*/}
                     <Route path="/newNote" exact component={AddNote}/>
                     <Route path="/notes/:id" exact component={Note}/>
                     <Route path="/notes/:id/history" exact component={NoteHistory}/>
