@@ -29,10 +29,12 @@ export default class Note extends Component{
         const noteId = +this.props.match.params.id;
         event.preventDefault();
 
+        console.log(event.target.title.value);
+
         const note = {
             id: noteId,
-            title: this.state.title,
-            content: this.state.content
+            title: event.target.title.value,
+            content: event.target.content.value
         };
 
         console.log(note);
@@ -48,9 +50,9 @@ export default class Note extends Component{
     };
 
     fieldChange = event => {
-        this.setState({
-            [event.target.name] : event.target.value
-        });
+        // this.setState({
+        //     [event.target.name] : event.target.value
+        // });
     };
 
 

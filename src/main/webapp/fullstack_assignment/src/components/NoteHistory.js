@@ -42,7 +42,7 @@ export default class NotesList extends Component{
 
                             this.state.notes.length === 0 ?
                                 <tr>
-                                    <td>0</td>
+                                    <td>0 notes created</td>
                                     <td>notes</td>
                                     <td>created</td>
                                 </tr> :
