@@ -15,8 +15,9 @@ To run this project, you will need:
 * Java 11+ (here: https://www.oracle.com/java/technologies/javase-downloads.html#javasejdk)
 * Node.js (here: https://nodejs.org/en/download/)
 * maven (here: https://maven.apache.org/download.cgi)
-Remember to set up Env variables in your system.
-Thanks to in-memory database that was used in this project there is no nee to setup database.
+
+* Remember to set up Env variables in your system.
+* Thanks to in-memory database that was used in this project there is no need to setup database.
 	
 ## Setup
 This project contains both client and server side. 
@@ -41,7 +42,7 @@ In another command line go to ./FullstackAssignment/src/main/webapp/fullstack_as
 ```
 $ cd ./FullstackAssignment/src/main/webapp/fullstack_assignment
 ```
-Now install lacally npm and start(it can take a short while):
+Now install locally npm and start it (it can take a short while):
 ```
 $ npm install
 $ npm start
