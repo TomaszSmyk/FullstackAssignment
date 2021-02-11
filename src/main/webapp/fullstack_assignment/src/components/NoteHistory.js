@@ -1,6 +1,8 @@
 import React, {Component} from "react";
-import {Card, Table} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Button, Card, Table} from "react-bootstrap";
+
+import BootstrapTable from 'react-bootstrap-table-next';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 import axios from "axios";
 
@@ -24,41 +26,44 @@ export default class NotesList extends Component{
     }
 
     render() {
-        const noteId = +this.props.match.params.id;
+
+        const columns =[
+            {
+                dataField: 'id',
+                hidden: true
+            },
+            {
+                dataField: 'title',
+                text: 'Title',
+                sort: true
+            },
+            {
+                dataField: 'created',
+                text: 'Created',
+                sort: true
+            },
+            {
+                dataField: 'modified',
+                text: 'Modified',
+                sort: true
+            },
+            {
+                dataField: 'content',
+                text: 'Content',
+                sort: true
+            }
+        ];
+
         return(
             <Card>
                 <Card.Body>
-                    <Table responsive="sm" bordered hover striped>
-                        <thead className="text-center">
-                        <tr>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Created</th>
-                            <th>Modified</th>
-                        </tr>
-                        </thead>
-                        <tbody className="text-center">
-                        {
-
-                            this.state.notes.length === 0 ?
-                                <tr>
-                                    <td>0 notes created</td>
-                                    <td>notes</td>
-                                    <td>created</td>
-                                </tr> :
-
-                                this.state.notes.map((note) => (
-                                    <tr>
-                                        <td> {note.title}</td>
-                                        <td> {note.content}</td>
-                                        <td> {note.created}</td>
-                                        <td> {note.modified}</td>
-                                    </tr>
-                                ))
-
-                        }
-                        </tbody>
-                    </Table>
+                    <BootstrapTable
+                        keyField='modified'
+                        data={this.state.notes}
+                        columns={columns}
+                        bootstrap4={true}
+                        noDataIndication="No notes found"
+                    />
                 </Card.Body>
             </Card>
         )

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NoteService {
@@ -24,8 +25,6 @@ public class NoteService {
     }
 
     public List<Note> getNoteHistory(Long id) {
-//        AuditReader auditReader = AuditReaderFactory.get();
-//        return noteRepository.findRevisions(id).getContent();
         List<Note> noteHistory = new ArrayList<>();
 
         noteRepository.findRevisions(id).get().forEach(x -> noteHistory.add(x.getEntity()));

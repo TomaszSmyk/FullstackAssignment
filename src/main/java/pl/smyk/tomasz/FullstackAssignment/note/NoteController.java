@@ -34,6 +34,7 @@ public class NoteController {
         return noteService.getNoteHistory(id);
     }
 
+
     @PostMapping("/newNote")
     public Note createNewNote(@RequestBody Note note) {
         log.info("POSTing new note " + note.toString());
