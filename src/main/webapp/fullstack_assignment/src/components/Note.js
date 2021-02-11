@@ -38,17 +38,10 @@ export default class Note extends Component{
         axios.put("http://localhost:8080/notes/" + noteId, note)
             .then(response => {
                 if (response.data != null) {
-                    // this.setState(this.initialState);
                     alert("Note saved");
                 }
             });
     };
-
-    deleteNote() {
-        const noteId = +this.props.match.params.id;
-        alert("Note deleted");
-        axios.delete("http://localhost:8080/notes/" + noteId);
-    }
 
     render() {
         const noteId = +this.props.match.params.id;
